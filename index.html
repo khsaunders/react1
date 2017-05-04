@@ -3,11 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>react1</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
   </head>
-  <script src="https://unpkg.com/react@latest/dist/react.js"></script>
-  <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
   <body>
+    <div id="placeWhereRendered"></div>
+    <script type="text/babel">
 
-  </body>
+      ReactDOM.render(
+        <h1>This is where stuff goes yay</h1>,
+        document.getElementById('placeWhereRendered');
+      );
+
+    </script>
+</body>
 </html>
