@@ -10,11 +10,15 @@
   <body>
     <div id="placeWhereRendered"></div>
     <script type="text/babel">
+    //making a component
+      var Butters = React.createClass({
 
-        ReactDOM.render(
-        <h1>This is where stuff goes yay</h1>,
-        document.getElementById('placeWhereRendered')
-      );
+        render: function (){
+          return (<h3>Butters is the best baby ever</h3>);
+        }
+      })
+
+        ReactDOM.render(<Butters/>,document.getElementById('placeWhereRendered'));
 
     </script>
 </body>
