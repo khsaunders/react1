@@ -10,20 +10,26 @@
   <body>
     <div id="placeWhereRendered"></div>
     <script type="text/babel">
+
     //making a component
-      var Butters = React.createClass({
+      var ListParty = React.createClass({
 
         render: function (){
           return (
-            <div>
-            <h3>Butters is the best baby ever</h3>
-            <p>He is a vewy good boy</p>
+            <div className="toDoList">
+            <h2>To Do</h2>
+            <input type="text" className="listInput" placeholder="enter to do"></input>
+            <button>+</button>
             </div>
           );
         }
-      })
+      });
 
-        ReactDOM.render(<Butters/>,document.getElementById('placeWhereRendered'));
+        ReactDOM.render(
+          <div>
+          <ListParty/>
+          </div>,document.getElementById('placeWhereRendered')
+        );
 
     </script>
 </body>
