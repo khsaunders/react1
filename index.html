@@ -14,12 +14,16 @@
     //making a component
       var ListParty = React.createClass({
 
+        addButton: function(){
+          alert('woooo button clicks, yo');
+        },
+
         render: function (){
           return (
             <div className="toDoList">
             <h2>To Do</h2>
             <input type="text" className="listInput" placeholder="enter to do"></input>
-            <button>+</button>
+            <button onClick={this.addButton}>+</button>
             </div>
           );
         }
