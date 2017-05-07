@@ -27,7 +27,7 @@
 //Question though: I have no idea why React simply accepts 'editing' as a state. I haven't introduced it or defined it until these states
         saveButton: function(){
           var valueTyped = this.refs.newText.value; //grabbing whatever is typed inside textarea because we are referring to it with ref, and targeting the specific value input with value
-          console.log ('Edited comment' + valueTyped);
+          console.log ('Edited comment ' + valueTyped);
           this.setState({editing:false});
         },
 
@@ -67,6 +67,33 @@
           }
         }
       });
+
+      //MULTIPLE CHILDREN: in order to make these items "aware of one another", we have to contain them together
+
+      var listHolder = React.createClass({
+        //initial state is going to show this text on load
+        getInitialState: function(){
+          //create an array of comments to populate page
+          return {
+            stuffOnList: [
+              'take Butters for walk',
+              'run away from responsibilities',
+              'sleep day away',
+            ]
+          }
+
+        },
+
+          render: function(){
+            return (
+              <div className="itemsOnList">
+              </div>
+            )
+          }
+        });
+
+      ReactDOM.render(<listHolder />, document.getElementById('placeWhereRendered')
+    );
 
         ReactDOM.render(
           <div className="listAesthetic">
