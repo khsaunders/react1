@@ -70,38 +70,37 @@
 
       //MULTIPLE CHILDREN: in order to make these items "aware of one another", we have to contain them together
 
-      var listHolder = React.createClass({
+      var ListHolder = React.createClass({
         //initial state is going to show this text on load
-        getInitialState: function(){
+        renameInitialState: function(){
           //create an array of comments to populate page
           return {
-            stuffOnList: [
+            commentText: [
               'take Butters for walk',
               'run away from responsibilities',
-              'sleep day away',
+              'sleep day away'
             ]
-          }
+          };
 
         },
 
           render: function(){
             return (
               <div className="itemsOnList">
+                {
+                  //this got weird. Never used map function, kind of strange. first use of "editedText", i just refers to counter for looping through array, like usual
+                  this.state.commentText.map(function(editText, i){
+                    return (<ListHolder key={i}>{editText}</ListHolder>);
+                  })
+                }
               </div>
-            )
+            );
           }
         });
 
-      ReactDOM.render(<listHolder />, document.getElementById('placeWhereRendered')
+      ReactDOM.render(<ListHolder/>, document.getElementById('placeWhereRendered')
     );
 
-        ReactDOM.render(
-          <div className="listAesthetic">
-          <ListParty>walk Butters</ListParty>
-          <ListParty>lick windows</ListParty>
-          <ListParty>poop on walls</ListParty>
-          </div>,document.getElementById('placeWhereRendered')
-        );
 
     </script>
 </body>
