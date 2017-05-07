@@ -3,35 +3,73 @@
   <head>
     <meta charset="utf-8">
     <title>react1</title>
+    <link rel="stylesheet" src="styles.css">
     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
   </head>
   <body>
+    <h2>To Do</h2>
     <div id="placeWhereRendered"></div>
     <script type="text/babel">
 
-    //making a component
+    //making a component (apparently the name chosen for this has to be capitalized??)
       var ListParty = React.createClass({
+//when user clicks edit, this creates a form for user to edit list item//
+        getInitialState: function(){
+          return {editing:false};
+        },
+//click edit, trigger this here. sets the state so the form will actually pop up
+        editButton: function(){
+          this.setState({editing:true});
+        },
+//save button for editing stuff. when in editing state, this button will appear instead of the other buttons
+        saveButton: function(){
+          this.setState({editing:false});
+        },
+
+        itemCreation: function(){
+          console.log('input stuff');
+        },
 
         addButton: function(){
           alert('woooo button clicks, yo');
         },
 
-        render: function (){
+        renderRegular: function (){
           return (
             <div className="toDoList">
-            <h2>To Do</h2>
-            <input type="text" className="listInput" placeholder="enter to do"></input>
-            <button onClick={this.addButton}>+</button>
+            <div>{this.props.children}</div>
+            <button onClick={this.editButton}>Edit</button>
+            <button onClick={this.deleteButton}>Delete</button>
             </div>
           );
+        },
+//this is the form that pops us when edit is clicked
+        renderEdit: function (){
+          return (
+            <div className="toDoList">
+            <textarea defaultValue={this.props.children}></textarea>
+            <button onClick={this.saveButton}>Save</button>
+            </div>
+          );
+        },
+
+        render: function(){
+          if(this.state.editing){
+            return this.renderEdit();
+          }
+          else{
+            return this.renderRegular();
+          }
         }
       });
 
         ReactDOM.render(
-          <div>
-          <ListParty/>
+          <div className="listAesthetic">
+          <ListParty>walk Butters</ListParty>
+          <ListParty>lick windows</ListParty>
+          <ListParty>poop on walls</ListParty>
           </div>,document.getElementById('placeWhereRendered')
         );
 
