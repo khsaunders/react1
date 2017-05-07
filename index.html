@@ -23,8 +23,11 @@
         editButton: function(){
           this.setState({editing:true});
         },
-//save button for editing stuff. when in editing state, this button will appear instead of the other buttons
+//save button for editing stuff. when in editing state, this button will appear instead of the other buttons.
+//Question though: I have no idea why React simply accepts 'editing' as a state. I haven't introduced it or defined it until these states
         saveButton: function(){
+          var valueTyped = this.refs.newText.value; //grabbing whatever is typed inside textarea because we are referring to it with ref, and targeting the specific value input with value
+          console.log ('Edited comment' + valueTyped);
           this.setState({editing:false});
         },
 
@@ -49,12 +52,12 @@
         renderEdit: function (){
           return (
             <div className="toDoList">
-            <textarea defaultValue={this.props.children}></textarea>
+            <textarea ref="newText" defaultValue={this.props.children}></textarea>
             <button onClick={this.saveButton}>Save</button>
             </div>
           );
         },
-
+//logic for different states. depending on what's clicked, text area will show for editing, OR it won't; will simply display regular state
         render: function(){
           if(this.state.editing){
             return this.renderEdit();
